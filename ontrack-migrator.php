@@ -311,7 +311,8 @@ function ontrack_migrator_admin_page() {
 		<div style="margin-top:1.5em; padding:1em; background:#e8f5e9; border:1px solid #a5d6a7; border-radius:4px; max-width:900px">
 			<strong>Next steps:</strong>
 			<ol style="margin:.5em 0 0 1.5em">
-				<li>Deactivate and delete this plugin.</li>
+				<li>Upload the updated <code>kcfa-membership/</code> plugin files over the existing folder.</li>
+				<li>Deactivate and delete this migrator plugin.</li>
 				<li>Flush permalinks: <strong>Settings → Permalinks → Save Changes</strong>.</li>
 				<li>Disable maintenance mode.</li>
 			</ol>
@@ -358,16 +359,17 @@ function ontrack_migrator_admin_page() {
 			<h3 style="margin-top:0">&#9888; Before you run</h3>
 			<ol>
 				<li><strong>Enable maintenance mode</strong> so visitors see a maintenance page during the switch.</li>
-				<li><strong>Deploy the updated Ontrack plugin</strong> (the version that reads <code>ontrack_</code> key names) to the server <em>before</em> clicking Run — but keep the old plugin folder active until this migration completes.</li>
-				<li>Run the migration below.</li>
-				<li>Switch the active plugin folder and theme folder to the new names.</li>
-				<li>Flush permalinks and disable maintenance mode.</li>
+				<li><strong>Run this migration now</strong> — the current plugin code is still in place and reading the old key names, so the site stays functional up to this point.</li>
+				<li>After migration completes, <strong>upload the updated Ontrack plugin files</strong> over the existing <code>kcfa-membership/</code> folder. The new code reads <code>ontrack_</code> key names, which now exist in the database.</li>
+				<li>Deactivate and delete this migrator plugin.</li>
+				<li>Flush permalinks: <strong>Settings → Permalinks → Save Changes</strong>.</li>
+				<li>Disable maintenance mode.</li>
 			</ol>
 			<form method="post">
 				<?php wp_nonce_field( 'ontrack_migrator_run' ); ?>
 				<label style="display:flex;align-items:flex-start;gap:.5em;cursor:pointer">
 					<input type="checkbox" name="ontrack_migrator_confirm" value="1" required style="margin-top:3px" />
-					<span>I have read the steps above, the site is in maintenance mode, and the updated Ontrack plugin is deployed.</span>
+					<span>I have read the steps above and the site is in maintenance mode.</span>
 				</label>
 				<br>
 				<input type="submit" name="ontrack_migrator_run"
